@@ -1,1 +1,2 @@
-Project Part of The Odin Project. Created simple substring method.
+Project Part of The Odin Project. Created simple substring method should return a hash of number of times the word appears from a given word list. Passes example test.  > substrings("Howdy partner, sit down! How's it going?", dictionary)
+  => { "down" => 1, "go" => 1, "going" => 1, "how" => 2, "howdy" => 1, "it" => 2, "i" => 3, "own" => 1, "part" => 1, "partner" => 1, "sit" => 1 }

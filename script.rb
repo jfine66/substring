@@ -3,34 +3,22 @@ dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","o
 
 def substring(string, word_list)
   words = string.split
-  words = remove_special_chars(words)
   substrings = Hash.new(0)
-  subs_array = words.map{|word| subs(word, word_list)}
-  print subs_array.flatten
+  subs_array = words.map{|word| split_word(word)}
+  subs_array = subs_array.flatten
+  subs_array.each{|word| substrings[word] += 1 if word_list.include?(word.downcase)}
+  print substrings
+end
+
+def split_word s
+  (0..s.length).inject([]){|ai,i|
+    (1..s.length - i).inject(ai){|aj,j|
+      aj << s[i,j]
+    }
+  }.uniq
 end
 
 
-def subs(word, word_list)
-  substring_array = []
-  counter = 0
-  subs_hash = Hash.new(0)
-  until counter == word.length * -1
-    substring_array << word[0..counter]
-    counter -= 1 
-  end
 
-  print substring_array
-end
-
-
- def remove_special_chars(words_array)
-  alphabet = ('a'..'z').to_a
-  words_array.map do |word|
-    word.downcase.each_char do |char| 
-      if alphabet.include?(char) == false
-        word.delete!(char)
-      end
-    end 
-  end
-  words_array
- end
+substring("Howdy partner, sit down! How's it going?", dictionary)
+substring("below", dictionary)

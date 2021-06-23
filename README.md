@@ -1,0 +1,1 @@
+Project Part of The Odin Project. Created simple substring method.
